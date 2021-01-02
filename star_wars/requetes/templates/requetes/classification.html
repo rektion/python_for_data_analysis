@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bankrupt dataset</title>
+</head>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        box-sizing: content-box;
+        font-family: Montserrat;
+        background-color: #153743;
+        --vert: #ed9b27;
+        --orange_clair:#0d8b8d;
+        --orange_fonce: #153743;
+        }
+        
+        .navbar {
+        position: relative;
+        height: 50px;
+        background-color: white;
+        color : grey;
+        font-size: 30px;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        }
+        
+        .navbar a {
+        text-align: center;
+        display: inline-block;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: medium;
+        color : gray;
+        padding: 15px;
+        margin: 0;
+        }
+        
+        .navbar a:active{
+        background-color: var(--orange_clair);
+        color : white;
+        }
+        
+        .navbar a:hover {
+        background-color: var(--orange_clair);
+        transition: 0.3s;
+        color : white;
+        }
+        
+        .intro {
+        background-color: var(--orange_fonce);
+        display: flex;
+        justify-content: center;
+        }
+        
+        .titre{
+        text-align: center;
+        padding: 1vw;
+        background-color: var(--orange_fonce);
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        color: white;
+        font-size: xx-large;
+        font-weight: bold;
+        }
+        
+        .bloc_header{
+        width: 80%;
+        background-color: var(--orange_clair);
+        margin: 5px;
+        padding: 2%;
+        border-radius: 15px;
+        text-align: center;
+        }
+        
+        .container {
+        width: 100%;
+        height: 100%;
+        background-color: lightgray;
+        }
+        
+        .btn {
+        padding: 10px;
+        background-color: var(--orange_fonce);
+        color: var(--orange_fonce);
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        }
+        
+        .button {
+        background-color: var(--orange_clair);
+        display: inline-flex;
+        letter-spacing: .05em;
+        font-weight: 500;
+        color: black;
+        outline: 0;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-radius: 45px;
+        padding: 25px 40px;
+        text-decoration: none;
+        }
+        
+        .button:hover{
+        background-color: white;
+        font-weight: 600;
+        transition:0.5s;
+        }  
+
+        figcaption {
+        color: #fff;
+        font: italic smaller sans-serif;
+        padding: 3px;
+        text-align: center;
+    }
+    </style>
+
+<body>
+
+    <div class="navbar">
+        <a href="{% url 'home' %}">Accueil</a>
+        <a href="{% url 'description' %}">Description</a>
+        <a href="{% url 'correlation' %}">Corrélations</a>
+        <a href="{% url 'classification' %}">Classification</a>
+    </div>
+    
+    <div class="container">
+        <div class="titre">
+            Classification using deep-learning
+        </div>
+        <div class="intro">
+            <div class="bloc_header">
+                Nous avons fait appel à un réseau de neuronne permettant de prédire si une entreprise va faire faillite 
+                à partir de son bilan annuel. Nous avons construit deux modèles. Un avec une activation softmax et le second
+                avec l'activation sigmoid (qui donne de meilleurs résultats). Les modèles sont recompilés à chaque chargement de page (d'où la lenteur pour 
+                générer cette page). Vous n'aurez jamais deux fois les même schémas. Ceux-cis représentent la précision
+                du modèle et les pertes en fonction du nombre d'epoch sur l'échantillon d'entraînement et de test. Nous
+                avons pris toutes les précautions nécéssaires pour éviter tout sur-apprentissage. 
+                <br><br>
+                    <img src="data:image/png;base64,{{ data }} " alt="" height="400" ,width="400">
+                    <figcaption>Accuracy du premier modèle avec activation softmax</figcaption>
+                    <br><br>
+                    <img src="data:image/png;base64,{{ data2 }} " alt="" height="400" ,width="400">
+                    <figcaption>Loss du premier modèle avec activation softmax</figcaption>
+                    <br><br>
+                    <br><br>
+                    <img src="data:image/png;base64,{{ data3 }} " alt="" height="400" ,width="400">
+                    <figcaption>Accuracy du second modèle avec activation sigmoid</figcaption>
+                    <br><br>
+                    <img src="data:image/png;base64,{{ data4 }} " alt="" height="400" ,width="400">
+                    <figcaption>Loss du second modèle avec activation sigmoid</figcaption>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+</html>
